@@ -41,11 +41,14 @@ begin
   Sleep(5000);
   Drone.Clockwise(90);
   Sleep(5000);
-  Drone.Forward(40);
+  Drone.Forward(60);
+  Sleep(5000);
+  Drone.flip(tfleft);
   Sleep(5000);
   Drone.Clockwise(90);
   Sleep(5000);
   Drone.Land;
+  ShowMessage('Fim');
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

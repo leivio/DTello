@@ -27,7 +27,7 @@ object Form1: TForm1
       Top = 24
       Width = 171
       Height = 25
-      Caption = 'Start Fly'
+      Caption = 'Sample Fly'
       TabOrder = 0
       OnClick = Button1Click
     end
