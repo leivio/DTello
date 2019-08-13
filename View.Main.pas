@@ -13,7 +13,6 @@ type
     GroupBox3: TGroupBox;
     GroupBox4: TGroupBox;
     Button1: TButton;
-    IdUDPClient1: TIdUDPClient;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
   private
@@ -33,7 +32,19 @@ implementation
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   Drone.TakeOff;
-  Sleep(1000);
+  Sleep(5000);
+  Drone.Forward(40);
+  Sleep(5000);
+  Drone.Clockwise(90);
+  Sleep(5000);
+  Drone.Forward(40);
+  Sleep(5000);
+  Drone.Clockwise(90);
+  Sleep(5000);
+  Drone.Forward(40);
+  Sleep(5000);
+  Drone.Clockwise(90);
+  Sleep(5000);
   Drone.Land;
 end;
 

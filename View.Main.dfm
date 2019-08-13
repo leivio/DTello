@@ -22,7 +22,6 @@ object Form1: TForm1
     Align = alLeft
     Caption = '  Control  '
     TabOrder = 0
-    ExplicitLeft = -4
     object Button1: TButton
       Left = 7
       Top = 24
@@ -40,10 +39,6 @@ object Form1: TForm1
     Height = 440
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 240
-    ExplicitTop = 24
-    ExplicitWidth = 185
-    ExplicitHeight = 105
     object GroupBox3: TGroupBox
       Left = 2
       Top = 120
@@ -51,10 +46,6 @@ object Form1: TForm1
       Height = 318
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 120
-      ExplicitTop = 104
-      ExplicitWidth = 185
-      ExplicitHeight = 105
     end
     object GroupBox4: TGroupBox
       Left = 2
@@ -63,14 +54,6 @@ object Form1: TForm1
       Height = 105
       Align = alTop
       TabOrder = 1
-      ExplicitLeft = 120
-      ExplicitTop = 104
-      ExplicitWidth = 185
     end
-  end
-  object IdUDPClient1: TIdUDPClient
-    Port = 0
-    Left = 299
-    Top = 256
   end
 end

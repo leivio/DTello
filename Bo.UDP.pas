@@ -19,7 +19,8 @@ type
       PORT_STREAM = 11111;
     constructor Create(AServer: string = '192.168.10.1'; APort: Integer = PORT_INIT);
     procedure BeforeDestruction; override;
-    function Send(const ACommand: string = INIT): Boolean;
+    function Send(const ACommand: string = INIT): string;
+
     function InitC: Boolean;
   end;
 
@@ -55,13 +56,11 @@ begin
   Result := SameText(_C,'ok');
 end;
 
-function TUDPControl.Send(const ACommand: string): Boolean;
-var
-  _C: string;
+function TUDPControl.Send(const ACommand: string): string;
 begin
   FUDP.Send(ACommand);
-  _C := FUDP.ReceiveString;
-  Result := SameText(_C,'ok');
+  Sleep(50);
+  Result := FUDP.ReceiveString;
 end;
 
 end.
