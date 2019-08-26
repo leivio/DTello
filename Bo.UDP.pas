@@ -41,7 +41,7 @@ begin
   FServer := AServer;
   FPort := APort;
   FUDP := TIdUDPClient.Create(nil);
-  FUDP.ReceiveTimeout := 2000;
+  FUDP.ReceiveTimeout := 3000;
   FUDP.Host := AServer;
   FUDP.Port := APort;
 end;
@@ -50,8 +50,10 @@ function TUDPControl.InitC: Boolean;
 var
   _C: string;
 begin
-  if not FUDP.Connected then FUDP.Connect;
+  if not FUDP.Connected then
+    FUDP.Connect;
   FUDP.Send(TUDPControl.INIT);
+  Sleep(50);
   _C := FUDP.ReceiveString;
   Result := SameText(_C,'ok');
 end;

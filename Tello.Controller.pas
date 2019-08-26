@@ -16,6 +16,7 @@ type
   public
     constructor Create(AServer: string = '192.168.10.1'; APort: Integer = 8889);
     {Controle de Inicio}
+    function Connect: Boolean;
     function TakeOff: Boolean; {Decolar padrão 150 cm}
     function Land: Boolean; {Aterrissa}
     function Emergency: Boolean; {Desliga as helices}
@@ -54,6 +55,7 @@ var
 begin
   Result := 0;
   _C := FControl.Send('battery?');
+  _C := Copy(_C, 1, Pos(_C, '#$'));
   if StrToIntDef(_C, -1) > -1 then
     Result := StrToInt(_C);
 end;
@@ -76,6 +78,12 @@ end;
 function TTello.Clockwise(const ADisplacement: Integer): Boolean;
 begin
   Result := SendCommand('cw ' + IntToStr(ADisplacement));
+end;
+
+function TTello.Connect: Boolean;
+begin
+  if not FInit then
+    FInit := FControl.InitC;
 end;
 
 function TTello.Counterclockwise(const ADisplacement: Integer): Boolean;
@@ -133,10 +141,7 @@ end;
 
 function TTello.SendCommand(ACommand: string): Boolean;
 begin
-  if not FInit then
-    FInit := FControl.InitC;
-  if FInit then
-    Result := SameText(FControl.Send(ACommand),'ok');
+  Result := SameText(FControl.Send(ACommand),'ok');
 end;
 
 function TTello.Stop: Boolean;
